@@ -1,0 +1,203 @@
+{
+	"info": {
+		"_postman_id": "226c99c2-4547-4165-92e5-ba6a2769fe95",
+		"name": "Spring Boot Mongo",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "MongoTemplate : Get User by Id",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8103/user/60829c06f82b67658f62dff5",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8103",
+					"path": [
+						"user",
+						"60829c06f82b67658f62dff5"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "MongoTemplate : Get All Setting by Setting Id",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8103/user/settings/60829c4df82b67658f62dff6",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8103",
+					"path": [
+						"user",
+						"settings",
+						"60829c4df82b67658f62dff6"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "MongoTemplate : Get All Setting by Setting Key",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8103/user/settings/60829c4df82b67658f62dff6/bike",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8103",
+					"path": [
+						"user",
+						"settings",
+						"60829c4df82b67658f62dff6",
+						"bike"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "MongoTemplate : Get Add Setting & User by Key User Value",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8103/user/settings/60829c4df82b67658f62dff6/type/2 Wheeler",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8103",
+					"path": [
+						"user",
+						"settings",
+						"60829c4df82b67658f62dff6",
+						"type",
+						"2 Wheeler"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "MongoTemplate : Get All User Copy 2",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8103/user",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8103",
+					"path": [
+						"user"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "MongoTemplate : Create user Copy",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "\r\n{\r\n  \"name\" : \"App\",\r\n  \"userSettings\" : {\r\n    \"bike\" : \"Apache\"\r\n  }\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8103/user/create",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8103",
+					"path": [
+						"user",
+						"create"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
