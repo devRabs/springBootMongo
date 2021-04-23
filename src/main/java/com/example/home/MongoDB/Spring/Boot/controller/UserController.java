@@ -1,7 +1,11 @@
 package com.example.home.MongoDB.Spring.Boot.controller;
 
+import com.example.home.MongoDB.Spring.Boot.MongoDbSpringBootApplication;
+import com.example.home.MongoDB.Spring.Boot.config.DefaultExceptionThrowConfig;
+import com.example.home.MongoDB.Spring.Boot.config.PropertiesConfiguration;
 import com.example.home.MongoDB.Spring.Boot.dao.UserDao;
 import com.example.home.MongoDB.Spring.Boot.dao.UserRepository;
+import com.example.home.MongoDB.Spring.Boot.exception.AppException;
 import com.example.home.MongoDB.Spring.Boot.model.User;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -15,22 +19,39 @@ import java.util.List;
 public class UserController {
     private final Logger logger = LoggerFactory.getLogger(getClass());
 
+    @Autowired
+    private PropertiesConfiguration propertiesConfiguration;
   //  @Autowired
    // private final UserRepository userRepository;
 
     @Autowired
     private UserDao userDao;
 
-    public UserController(UserRepository userRepository, UserDao userDao) {
+    private DefaultExceptionThrowConfig  defaultExceptionThrowConfig;
+
+    public UserController(UserRepository userRepository, UserDao userDao, final PropertiesConfiguration propertiesConfiguration, final DefaultExceptionThrowConfig defaultExceptionThrowConfig) {
         //this.userRepository = userRepository;
         this.userDao = userDao;
+        this.propertiesConfiguration=propertiesConfiguration;
+        this.defaultExceptionThrowConfig=defaultExceptionThrowConfig;
     }
 
+    @RequestMapping(value="/exp",method = RequestMethod.GET)
+    public Object getExp() throws AppException{
+        if(null!=defaultExceptionThrowConfig.getThrowableCondition() && "true".equalsIgnoreCase(defaultExceptionThrowConfig.getThrowableCondition())){
+            throw new AppException("Unknown server exp ocurred");
+        }
+
+            return null;
+
+    }
 
     @RequestMapping(value = "", method = RequestMethod.GET)
     public List<User> getAllUsers() {
         logger.info("Getting all users.");
         //return userDao.getAllUsers();
+        logger.info("App Name : " + propertiesConfiguration.getName());
+        logger.info("Exception throwable : " + defaultExceptionThrowConfig.getThrowableCondition());
         return  userDao.getAllUsers();
     }
 
