@@ -7,6 +7,7 @@ import com.example.home.MongoDB.Spring.Boot.dao.UserDao;
 import com.example.home.MongoDB.Spring.Boot.dao.UserRepository;
 import com.example.home.MongoDB.Spring.Boot.exception.AppException;
 import com.example.home.MongoDB.Spring.Boot.model.User;
+import com.example.home.MongoDB.Spring.Boot.service.UserSerice;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,15 +26,19 @@ public class UserController {
    // private final UserRepository userRepository;
 
     @Autowired
+    private UserSerice userSerice;
+
+    @Autowired
     private UserDao userDao;
 
     private DefaultExceptionThrowConfig  defaultExceptionThrowConfig;
 
-    public UserController(UserRepository userRepository, UserDao userDao, final PropertiesConfiguration propertiesConfiguration, final DefaultExceptionThrowConfig defaultExceptionThrowConfig) {
+    public UserController(UserRepository userRepository, UserDao userDao, final PropertiesConfiguration propertiesConfiguration, final DefaultExceptionThrowConfig defaultExceptionThrowConfig, final UserSerice userSerice) {
         //this.userRepository = userRepository;
         this.userDao = userDao;
         this.propertiesConfiguration=propertiesConfiguration;
         this.defaultExceptionThrowConfig=defaultExceptionThrowConfig;
+        this.userSerice=userSerice;
     }
 
     @RequestMapping(value="/exp",method = RequestMethod.GET)
@@ -64,7 +69,7 @@ public class UserController {
     @RequestMapping(value = "/create", method = RequestMethod.POST)
     public User addNewUsers(@RequestBody User user) {
         logger.info("Saving user.");
-        //return userDao.addNewUser(user);
+        userSerice.createUser(user);
         return userDao.addNewUser(user);
     }
 

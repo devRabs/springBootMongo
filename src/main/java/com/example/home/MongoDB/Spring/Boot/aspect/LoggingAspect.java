@@ -13,7 +13,7 @@ public class LoggingAspect {
 
     private static final Logger logger = LoggerFactory.getLogger(LoggingAspect.class);
 
-    @Around("execution (* com.example.home.MongoDB.Spring.Boot.*.*(..))")
+    @Around("execution (* com.example.home.MongoDB.Spring.Boot.service.*.*(..))")
     public void aroundAdviceForAllMethods(ProceedingJoinPoint proceedingJoinPoint) throws Throwable{
         logger.info("Before advise method execution :" + proceedingJoinPoint.getSignature().getName());
         proceedingJoinPoint.proceed();
